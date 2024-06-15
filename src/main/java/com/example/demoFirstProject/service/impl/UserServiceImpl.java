@@ -4,16 +4,18 @@ import com.example.demoFirstProject.model.User;
 import com.example.demoFirstProject.repository.UserRepository;
 import com.example.demoFirstProject.service.UserServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class UserServiceImpl implements UserServiceI {
 
     @Autowired
     private UserRepository userRepository;
 
-     //IOC -Spring bean life cycle ,DI injection
+    //IOC -Spring bean life cycle ,DI injection
 
     //DI - Dependency Injection : setter injection, constructor injection , field dependency injection
 
