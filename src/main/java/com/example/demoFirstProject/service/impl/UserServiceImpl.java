@@ -3,6 +3,9 @@ package com.example.demoFirstProject.service.impl;
 import com.example.demoFirstProject.model.User;
 import com.example.demoFirstProject.repository.UserRepository;
 import com.example.demoFirstProject.service.UserServiceI;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +13,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class UserServiceImpl implements UserServiceI {
+    private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
+
+    // Logger logger= LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -21,8 +28,10 @@ public class UserServiceImpl implements UserServiceI {
 
     @Override
     public User createUser(User user) {
-        User saveUser = userRepository.save(user);
 
+        log.info("Initiating the dao call for the save user data");
+        User saveUser = userRepository.save(user);
+        log.info("Completed the dao call for the save user data");
         return saveUser;
     }
 

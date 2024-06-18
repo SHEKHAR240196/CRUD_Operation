@@ -2,6 +2,9 @@ package com.example.demoFirstProject.controller;
 
 import com.example.demoFirstProject.model.User;
 import com.example.demoFirstProject.service.UserServiceI;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +16,11 @@ import java.util.List;
 @RequestMapping("/api")
 public class UserController {
 
+    //Logger-Log4j
+    //Slf4j
+    //INFO,WARN,DEBUG,ERROR,TRACE
+
+    Logger logger= LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private UserServiceI userServiceI;
@@ -25,8 +33,11 @@ public class UserController {
 
    // @RequestMapping(method = RequestMethod.POST ,name = "/users")
    @PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+   public ResponseEntity<User> createUser(@RequestBody User user) {
+
+       logger.info("Entering the request for save user data");
         User saveUser = userServiceI.createUser(user);
+       logger.info("Completed the request for save user data");
         return new ResponseEntity<>(saveUser, HttpStatus.CREATED); //201:Status Code
     }
 
