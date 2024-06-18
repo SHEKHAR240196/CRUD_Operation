@@ -49,7 +49,10 @@ public class UserController {
 
     @GetMapping("/users/{userId}")
     public ResponseEntity<User> getSingleUser(@PathVariable Long userId){
+
+       logger.info("Entering the request for get user data with userId {} " ,userId);
         User user = userServiceI.getSingleUser(userId);
+        logger.info("Completed the request for get user data with userId {} " ,userId);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 

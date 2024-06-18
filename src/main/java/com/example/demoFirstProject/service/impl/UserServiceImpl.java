@@ -52,9 +52,10 @@ public class UserServiceImpl implements UserServiceI {
     @Override
     public User getSingleUser(Long userId) {
 
+       log.info("Initiating the dao call for the get single user data as userId {} " ,userId);
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("Resource not found on server!!" + userId));
-
+        log.info("Completed the dao call for the get single user data as userId {} " ,userId);
         return user;
     }
         /* Optional<User> user = userRepository.findById(userId);
